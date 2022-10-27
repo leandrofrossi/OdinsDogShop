@@ -1,0 +1,8 @@
+.item-list-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    font-size: 3rem;
+    background-color:dimgrey
+};
