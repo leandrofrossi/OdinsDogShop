@@ -1,8 +1,10 @@
 .item-list-container{
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    height: 90vh;
-    font-size: 3rem;
+    min-height: 90vh;
+    font-size: 2rem;
     background-color:dimgrey
 };
