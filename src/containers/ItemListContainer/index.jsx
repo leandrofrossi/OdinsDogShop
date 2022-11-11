@@ -1,35 +1,42 @@
 import React, {useEffect, useState} from 'react';
 import ItemList from '../../components/ItemList';
 import { useParams } from 'react-router-dom';
-import rawProducts from '../../data/products';
+import { getProducts, getProductsByCategory } from '../../data/products';
+import './styles.css';
 
-export default function ItemListContainer () {
 
-  const [products, setProducts] = useState([])
+const ItemListContainer = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const {categoryId} = useParams()
+  const { categoryId } = useParams();
+
+  useEffect(() => {
+    setLoading(true)
+    const asyncFunction = categoryId ? getProductsByCategory : getProducts
     
-  useEffect(()=> {
-    ( async ()=> {
-      const obtenerProductos = ()=>{
-        return new Promise ((resolve, reject)=>{
-          setTimeout(()=>{
-            resolve(rawProducts)
-          },2000)
-        })
-      };
-        try{          
-            const response = await obtenerProductos();
-            setProducts(response)  
-        } catch(error){
-          <h2>ERROR</h2>
-        }
-    })()
-  }, [categoryId])
+    asyncFunction(categoryId).then(response => {
+        setProducts(response)
+    }).catch(error => {
+        console.log(error)
+    }).finally(() => {
+        setLoading(false)
+    })  
+}, [categoryId]);
 
-  return (
-    <>
-      {products.length ? <ItemList products={products}/> : <h2>Loading...</h2>}
-    </>
-  )
-}
+if(loading) {
+      return <h1>Cargando productos...</h1>
+  };
+
+    if(products.length === 0) {
+      return categoryId ? <h1>No hay productos en nuestra categoria {categoryId}</h1> : <h1>No hay productos disponibles</h1>
+    };
+
+return (
+  <div>            
+      <ItemList products={products} />
+  </div>
+);
+};
+
+export default ItemListContainer;
