@@ -33,7 +33,7 @@ if(loading) {
     };
 
 return (
-  <div>            
+  <div className='ItemListContainer'>            
       <ItemList products={products} />
   </div>
 );

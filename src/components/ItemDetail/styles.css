@@ -1,11 +1,11 @@
 .item-detail{
-    width: 90vh;
-    height: 50vh;
+    width: 100%;
+    height: calc(100vh - 90px);
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 100px;
+    gap: 50px;
     padding: 15px;
     background-color: #242323;
     font-size: 1.5rem;
@@ -17,5 +17,8 @@
     align-items: center;
     background-color: dimgrey;
     width: 100%;
-    height: calc(100vh - 90px);
+    height: calc(100vh - 90px);    
+}
+.item-detail-text{
+    text-align: center;
 }

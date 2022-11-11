@@ -6,22 +6,21 @@ import './styles.css';
 
 const ItemDetailContainer = () => {
 
-    const {Id} = useParams();
+    const {id} = useParams();
 
     const [product, setProduct] = useState(null);
-
-   useEffect(() => {
+    useEffect(() => {
     try{
-      getProductById(Id).then(response => {
+      getProductById(id).then(response => {
         setProduct(response)
       })
     } catch (error){
       console.log(error)
     }
-    }, [Id]);
+    }, [id]); 
 
     return (product ? <ItemDetail product={product}/> : <h2>Loading...</h2> );
     
   };
 
-export default ItemDetailContainer; 
+export default ItemDetailContainer;

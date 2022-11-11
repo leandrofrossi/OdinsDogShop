@@ -21,11 +21,11 @@ const ItemDetail = ({ product }) => {
                 <button>Go cart</button>
                 <button>Go back</button>
               </div>
-              : 
+              :  
               <ItemCount onAdd={confirmPurchase} initial={1} stock={product.stock} />
-              }
+               }
              </div>
-          </div>
+          </div> 
         </div>
   );
 };
