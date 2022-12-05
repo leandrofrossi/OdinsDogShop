@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Proyecto para el curso REACT.JS en CoderHouse, comisión 40275.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Pasos para ejecutar el proyecto
 
-## Available Scripts
+- Descargar/clonar este repositorio.
 
-In the project directory, you can run:
+- Asegurarse de contar con [NodeJs](https://nodejs.org/en/) en la PC.
 
-### `npm start`
+- Desde la carpeta del proyecto correr el siguiente comando en la terminal:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```sh
+npm install
+```
+- Cargar o crear las variables de entorno para poder utilizar el proyecto.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- El proyecto ya está listo para compilarse y ejectuarse con el siguiente comando:
 
-### `npm test`
+```sh
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## E-Commerce para Odin´s Dog Shop
 
-### `npm run build`
+Simulador de E-Commerce de productos para perros para Odin´s Dog Shop.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+La aplicación se basa en una tienda online de productos para perros, donde se detalla cada producto y se cuenta con un filtrado por categorías usando la información cargada en Firebase, la cual contiene los productos y registra las ordenes de compra.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Las acciones que se pueden realizar en el simulador son las siguientes:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Filtrado de productos según su categoría.  
 
-### `npm run eject`
+- Interactuar con cada producto en el origen y desplegar su card propia con los detalles del mismo. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- La card de detalle cuenta con un contador que sirve para sumar la cantidad deseada de productos al carrito.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Al cargar la cantidad deseada de productos al carrito aparece el botón para ir al mismo.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Dentro del carrito nos encontramos con todos los productos cargados, cantidad de cada artículo y precio de cada uno, así como también el total.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Están las opciones de sacar del carrito algún producto puntual o todos, y también la opción de avanzar con la compra.
 
-## Learn More
+- En el formulario para realizar la orden se deben cargar nombre, email y teléfono para ser contactado una vez realizada la misma.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Al realizar la orden, un alert nos indica el código de la misma y nos redirecciona al home.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Instalaciones mediante npm.
 
-### Code Splitting
+- Framework: React (Create-React-App)
+- Libraries:
+  > React-router-dom  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Funcionamiento de la App
 
-### Analyzing the Bundle Size
+Las categorías de los productos están linkeadas en el navbar para realizar el filtrado de los mismos según su categoría usando las rutas "/category/:categoryId". 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+En el componente ItemListContainer están guardados las cards de los productos, creadas de forma dinámica atreves de los componentes ItemList e Item, haciendo click en la card nos va a dirigir hacia la ruta "/detail/:productId" donde están los detalles del producto seleccionado, y el mismo cuenta con un componente llamado Counter, el cual se va a ocupar de dar la opción interactiva al usuario para sumar la cantidad que desee de producto al carrito de compra, mediante los botones de "-", "+" y "Agregar al Carrito". Una vez agregados los productos el contador va a ser reemplazado por un botón de "Volver al Inicio" que nos redirecciona al home para seguir comprando, y otro botón de "Ir al Carrito", el cuál nos redirecciona al componente CartContainer, donde vamos a encontrar unas versiones simplificadas de las cards de los productos cargados. En este componente nos encontramos con los precios de cada artículo y el total del carrito, también con las opciones de eliminar el producto que no se vaya a comprar o eliminar todo el carrito, dejándolo vacío. También se puede avanzar con la compra, lo cual nos lleva al componente Formulario, el que se va a ocupar de recibir la información del comprador, que, al generar la orden, se le imprime en un alert el código de la misma y se lo redirecciona al home.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Deployed App
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Deploy]().

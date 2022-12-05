@@ -3,16 +3,16 @@ import React from "react";
 
 export const Shop = createContext({});
 
-const ShopProvider = ({ children }) => {
+const ShopProvider = ({children}) => {
     const [products, setProducts] = useState([]);
 
-    const addProduct = (productToAdd) => {
+    const addProduct = (productToAdd) => {        
         const flagRepeated = isProductRepeated(productToAdd.id);
         if (flagRepeated) {            
             const productoRepetidoModificado = products.find(
                 (productInCart) => productInCart.id === productToAdd.id
             );
-            productoRepetidoModificado.quantity += productToAdd.quantity;            
+            productoRepetidoModificado.stock += productToAdd.stock;            
             const productosCartSinRepetido = products.filter(
                 (productsInCart) => productsInCart.id !== productToAdd.id
             );
@@ -42,8 +42,8 @@ const ShopProvider = ({ children }) => {
 
     const calculateTotal = () => {
         const total = products.reduce(
-            (acc, productoActual) =>
-                (acc += productoActual.quantity * productoActual.price),
+            (acc, producto) =>
+                (acc += producto.stock * producto.precio),
             0
         );
         return total;
@@ -51,7 +51,7 @@ const ShopProvider = ({ children }) => {
 
     const totalItemsCart = () => {
         let total = 0;
-        products.forEach((product) => (total += product.quantity));
+        products.forEach((product) => (total += product.stock));
         return total;
     };
 

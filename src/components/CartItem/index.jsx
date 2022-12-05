@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Shop } from '../../contexts/Shop'
 import TrashIcon from '../TrashIcon'
+import './styles.css';
 
 const CartItem = ({item}) => {
 
@@ -11,11 +12,12 @@ const CartItem = ({item}) => {
   };
 
   return (
-    <div>
-        <img src ={item.image} alt='cart-item'/>
-        <h1>{item.name}</h1>        
-        <p>{item.quantity}</p>
-        <div onClick={deleteProd}>
+    <div className='cartContainer'>
+        <img className='cartImage' src ={item.image} alt='cart-item'/>
+        <h1>{item.name} (${item.precio})</h1>        
+        <p>{item.stock}</p>
+        <p>Subotal ${item.stock*item.precio}</p>
+        <div className='trash' onClick={deleteProd}>
           <TrashIcon />
         </div>
     </div>

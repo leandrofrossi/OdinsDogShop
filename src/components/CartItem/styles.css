@@ -1,0 +1,28 @@
+.trash{
+    width: 60px;
+    height: 60px;
+    background-color: aqua;
+    padding: 10px;    
+}
+.cartContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    height: 100%;
+    background-color: #242323;
+    padding: 15px;
+}
+.cartImage{
+    width: 250px;
+    height: 250px;
+    border-radius: 8px;
+    border: solid black 1px;
+}
+p,h1{
+    font-size: 2rem;
+    font-weight: bolder;
+    color: aqua;
+}

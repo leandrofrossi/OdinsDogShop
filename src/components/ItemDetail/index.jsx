@@ -11,11 +11,11 @@ const ItemDetail = ({ product }) => {
 
   const navigate = useNavigate();
 
-  const confirmPurchase = (quantity) => {     
-    addProduct({...product, quantity})   
-    setQuantityItemDetail(quantity);
+  const confirmPurchase = (stock) => {     
+    addProduct({...product, stock})   
+    setQuantityItemDetail(stock);
   };
-
+ 
   const navigateCart = () => {
     navigate('/cart')
   };
@@ -27,14 +27,15 @@ const ItemDetail = ({ product }) => {
   return (
         <div className="item-detail-container">
           <div className="item-detail">  
-            <img src={product.image} width={250} height={300}alt="detail" />
+            <img className="detail-image" src={product.image} alt="detail" />
             <div className="item-detail-text">
               <h1>{product.name}</h1>
-              <p>{product.description}</p>                    
+              <p>{product.description}</p>
+              <p>${product.precio}</p>                      
               {quantityItemDetail ? 
               <div>
-                <button onClick={navigateCart}>Go cart</button>
-                <button onClick={navigateHome}>Go back</button>
+                <button className="boton" onClick={navigateCart}>Ir al Carrito</button>
+                <button className="boton" onClick={navigateHome}>Voler a Inicio</button>
               </div>
               :  
               <ItemCount onAdd={confirmPurchase} initial={1} stock={product.stock} />

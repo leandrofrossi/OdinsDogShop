@@ -1,30 +1,41 @@
 import React, { useContext } from "react";
 import CartItem from "../../components/CartItem";
 import { Shop } from "../../contexts/Shop";
-import { saveOrder } from "../../services/saveOrder";
+import { useNavigate } from "react-router-dom";
+import './styles.css';
+
 
 const CartContainer = () => {
-    const { products, calculateTotal } = useContext(Shop);
-
-    const confirmPurchase = () => {
-        //Mostrar un formulario de compra, donde el usuario ingrese sus datos
-        (async () => {
-           await saveOrder(
-            "Sebas",
-            11111122222,
-            "sebas@live.com",
-            products,
-            calculateTotal()
-           )
-        })();
+    const { products, calculateTotal, emptyCart } = useContext(Shop);
+    
+    const navigate = useNavigate();
+    
+    const navigateForm = () => {
+        navigate('/form')
+      };
+    const navigateHome = () => {
+        navigate('/')
+      };
+    const vaciarCarrito = () =>{
+        emptyCart()
     };
-    // De no haber items debería mostrarse de manera condicional un mensaje "No hay items en el cart"
-    return (
-        <div>
+   
+
+    return (products.length>0 ?
+        <div className="containerCart">
             {products.map((product) => {
-                return <CartItem key={product.id} item={product} />;
-            })};
-            <button className="botonCompra" onClick={confirmPurchase}>Confirmar compra</button>
+                return <CartItem key={product.id} item={product} />
+            })}
+            <p>El total de la compra es $ {calculateTotal()}</p>
+            <div>
+                <button className="botonCompra" onClick={navigateForm}>Confirmar compra</button>
+                <button className="botonCompra" onClick={vaciarCarrito}>Vaciar Carrito</button>
+            </div>
+        </div>
+        :
+        <div className="containerCart">
+            <h2 className="texto">NO HAY PRODUCTOS EN EL CARRITO</h2>
+            <button className="botonCompra" onClick={navigateHome}>Voler a Inicio</button>
         </div>
     );
 };

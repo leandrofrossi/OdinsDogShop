@@ -20,7 +20,7 @@ export const saveOrder = async (nombreComprador, telefono, email, products, tota
             const docSnap = await getDoc(docRef);
             const productInFirebase = { ...docSnap.data(), id: docSnap.id };
             productsInFirebase.push(productInFirebase);
-            if (productInCart.quantity > productInFirebase.quantity)
+            if (productInCart.stock > productInFirebase.stock)
                 productOutOfStock.push(productInCart);
         }
     
@@ -38,9 +38,9 @@ export const saveOrder = async (nombreComprador, telefono, email, products, tota
                 );
                 
                 await updateDoc(productRef, {
-                    quantity:
-                        productInFirebase.quantity -
-                        productInCart.quantity,
+                    stock:
+                        productInFirebase.stock -
+                        productInCart.stock,
                 });
             }
                
@@ -51,13 +51,14 @@ export const saveOrder = async (nombreComprador, telefono, email, products, tota
             alert(
                 `Se generó la compra correctamente con ID: ${docRef.id}. Recibirá un email con el detalle y un Whatsapp para coordinar el pago y la entrega. Gracias!`
             );
+            
         } else {
             let mensaje = "";
             for (const product of productOutOfStock) {
                 const productInFirebase = productsInFirebase.find(
                     (productFirebase) => productFirebase.id === product.id
                 );                
-                mensaje += `${product.name}, stock disponible: ${productInFirebase.quantity}, cantidad pedida: ${product.quantity}\n`;
+                mensaje += `${product.name}, stock disponible: ${productInFirebase.stock}, cantidad pedida: ${product.stock}\n`;
             }
             alert(`Hay producto/s fuera de stock: \n${mensaje}`);
         }

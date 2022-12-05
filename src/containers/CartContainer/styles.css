@@ -1,0 +1,24 @@
+.botonCompra{
+    background-color:#282c34;
+    color: aqua;
+    border-radius: 8px;
+    font-size: 2rem;
+    text-align: center;
+    width: 25vh;
+    height: 15vh;    
+}
+.containerCart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    background-color: #242323;   
+    height: calc(100% - 90px);
+    min-height: calc(100vh - 90px);
+      
+}
+.texto{
+    font-size: 3rem;
+    color: aqua;    
+}
