@@ -3,7 +3,7 @@
     height: 60px;
     background-color: aqua;
     padding: 10px; 
-    border-radius: 8px;   
+    border-radius: 10px;   
 }
 .cartContainer{
     display: flex;
